@@ -1,3 +1,3 @@
 for dedos in 1..3
-  puts "teste"
+  puts "Contador: " + dedos.to_s
 end
