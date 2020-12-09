@@ -7,7 +7,8 @@ puts "Escolhendo um número secreto entre 0 e 200"
 numero_secreto = 175
 puts "Escolhido... que tal adivinhar hoje nosso número secreto?"
 puts "\n\n\n\n\n"
-puts "Tentativa 1"
+for tentativas in 1..3
+puts "Tentativa " + tentativas.to_s + "de 3"
 puts "Entre com o numero"
 chute = gets
 puts "Será que acertou? Você chutou " + chute
@@ -23,6 +24,5 @@ else
   else
     puts "O número secreto é menor!"
   end
-
-
+end
 end
