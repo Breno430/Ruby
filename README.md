@@ -1,2 +1,2 @@
-# Ruby-on-Rails
+# Ruby
 Ruby formação Alura
