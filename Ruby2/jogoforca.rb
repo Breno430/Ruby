@@ -1,7 +1,19 @@
 require_relative 'ui'
 
-def pede_chute_valido(chutes, erros)
-  cabecalho(chutes, erros)
+def palavra_mascarada(chutes , palavras_secretas)
+  mascara = ""
+  for letra in palavras_secretas.chars
+    if chutes.include? letra
+      mascara<<letra
+    else
+      mascara<<"_"
+    end
+  end
+  mascara
+end
+
+def pede_chute_valido(chutes, erros, mascara)
+  cabecalho(chutes, erros, mascara)
   loop do
   chute = pede_um_chute
     if chutes.include? chute
@@ -19,7 +31,8 @@ def joga(nome)
   pontos_ate_agora = 0
 
   while erros < 5
-    chute = pede_chute_valido(chutes, erros)
+    mascara = palavra_mascarada(chutes, palavra_secreta)
+    chute = pede_chute_valido(chutes, erros, mascara)
     chutes << chute
     chutou_uma_letra = chute.size == 1
     if chutou_uma_letra
