@@ -31,13 +31,6 @@ def boas_vindas
   nome
 end
 
-def escolher_palavra_secreta
-  puts "Escolhendo uma palavra secreta..."
-  palavra_secreta = "Antonio"
-  puts "Palavra secreta com #{palavra_secreta.size} letras, boa sorte"
-  palavra_secreta
-end
-
 def nao_quero_jogar?
   puts "Deseja jogar novamente? (S/N)"
   quero_jogar = gets.strip
@@ -53,7 +46,18 @@ end
 
 def pede_um_chute
   puts "Entre com uma letra ou uma palavra"
-  chute = gets.strip
+  chute = gets.strip.downcase
   puts "Será que você acertou? Você chutou #{chute}"
   chute
+end
+
+def escolhendo_palavra_secrete
+  puts "Escolhendo uma palavra secreta..."
+end
+def avisa_palavra_escolhida(palavra_secreta)
+  puts "Palavra secreta com #{palavra_secreta.size} letras, boa sorte"
+  palavra_secreta
+end
+def avisa_pontos_totais(pontos_totais)
+  puts "Você possui #{pontos_totais} pontos."
 end

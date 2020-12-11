@@ -1,5 +1,27 @@
 require_relative 'ui'
 
+def escolher_palavra_secreta
+  escolhendo_palavra_secrete
+  texto = File.read("dicionario.txt")
+  todas_as_palavras = texto.split "\n"
+  numero_escolhido = rand(todas_as_palavras.size)
+  palavra_secreta = todas_as_palavras[numero_escolhido].downcase
+  avisa_palavra_escolhida(palavra_secreta)
+end
+
+# def escolher_palavra_secreta_sem_consumir_muita_memoria
+#   escolhendo_palavra_secrete
+#   arquivo = File.new("dicionario.txt")
+#   quantidade_de_palavras = arquivo.gets.to_i
+#   numero_escolhido = rand(quantidade_de_palavras)
+#   for linha in 1..(numero_escolhido-1)
+#     arquivo.gets
+#   end
+#   palavra_secreta = arquivo.gets.strip.downcase
+#   arquivo.close
+#   avisa_palavra_escolhida(palavra_secreta)
+# end
+
 def palavra_mascarada(chutes , palavras_secretas)
   mascara = ""
   for letra in palavras_secretas.chars
@@ -58,14 +80,17 @@ def joga(nome)
   end
   end
   avisa_pontos pontos_ate_agora
+  pontos_ate_agora
 end
 
 
 
 def jogo_forca
   nome = boas_vindas
+  pontos_totais = 0
   loop do
-    joga nome
+    pontos_totais += joga(nome)
+    avisa_pontos_totais(pontos_totais)
     if nao_quero_jogar?
       break
     end
