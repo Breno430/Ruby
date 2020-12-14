@@ -1,4 +1,5 @@
 require_relative 'ui'
+require_relative 'rank'
 
 def escolher_palavra_secreta
   escolhendo_palavra_secrete
@@ -88,9 +89,15 @@ end
 def jogo_forca
   nome = boas_vindas
   pontos_totais = 0
+  avisa_campeao le_rank
   loop do
     pontos_totais += joga(nome)
     avisa_pontos_totais(pontos_totais)
+
+    if le_rank[1].to_i < pontos_totais
+      salva_rank(nome, pontos_totais)
+    end
+
     if nao_quero_jogar?
       break
     end
